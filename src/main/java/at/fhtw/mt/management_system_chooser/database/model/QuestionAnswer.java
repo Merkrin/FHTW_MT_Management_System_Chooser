@@ -11,9 +11,5 @@ public class QuestionAnswer {
     @Column(name = "answer_id")
     private Integer answerId;
 
-    @ManyToOne
-    @JoinColumn(name = "requirement_question_id")
-    private RequirementQuestion requirementQuestion;
-
     private String description;
 }

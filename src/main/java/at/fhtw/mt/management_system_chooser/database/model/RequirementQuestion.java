@@ -23,6 +23,7 @@ public class RequirementQuestion {
 
     private String description;
 
-    @OneToMany(mappedBy = "requirementQuestion")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "requirement_question_id", referencedColumnName = "requirement_id")
     private List<QuestionAnswer> questionAnswers;
 }
