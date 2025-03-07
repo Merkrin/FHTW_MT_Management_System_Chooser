@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compared systems</title>
+    <script type="text/javascript" th:src="@{/scripts/input_fields_conductor.js}" defer></script>
+</head>
+<body>
+    <h2>Input compared systems</h2>
+    <form action = "/questions" method = "post">
+        <div id="systems-container">
+            <div>
+                <label>
+                    System name:
+                    <input type="text" name="system" required>
+                </label>
+                <button type="button" onclick="addField()">+</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
