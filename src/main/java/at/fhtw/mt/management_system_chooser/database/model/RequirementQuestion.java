@@ -1,17 +1,13 @@
 package at.fhtw.mt.management_system_chooser.database.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "requirement_questions")
-@Getter
-@Setter
-@NoArgsConstructor
 public class RequirementQuestion {
     @Id
     @Column(name = "requirement_id")
