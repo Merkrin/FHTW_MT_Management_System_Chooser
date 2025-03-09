@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System evaluation</title>
+</head>
+<body>
+<h2>Input systems evaluation</h2>
+<form action="/submit" method="post">
+    <table style="border: 1px solid black;">
+        <tr>
+            <th>Evaluation question</th>
+            <th th:each="system : ${systems}" th:text="${system}"></th>
+        </tr>
+        <tr th:each="question : ${questions}">
+            <td th:text="${question.description}"/>
+            <td th:each="system : ${systems}">
+                <label>
+                    <select th:name="${system} + '_' + ${question.requirementId}">
+                        <option value="">Choose</option>
+                        <option th:each="answer : ${answersMap.get(question.requirementId)}"
+                                th:value="${answer.answerId}"
+                                th:text="${answer.description}">
+                        </option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Submit answers</button>
+</form>
+</body>
+</html>
