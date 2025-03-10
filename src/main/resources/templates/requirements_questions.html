@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>System evaluation</title>
-</head>
+<th:block th:replace="fragments/layout"/>
 <body>
-<h2>Input systems evaluation</h2>
-<form action="/submit" method="post">
-    <table style="border: 1px solid black;">
+<div th:fragment="content">
+    <h2 class="text-center text-primary">Input Systems Evaluation</h2>
+<form action="/submit" method="post" class="mt-4">
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
         <tr>
-            <th>Evaluation question</th>
+            <th>Evaluation Question</th>
             <th th:each="system : ${systems}" th:text="${system}"></th>
         </tr>
-        <tr th:each="question : ${questions}">
-            <td th:text="${question.description}"/>
+        </thead>
+        <tbody>
+        <tr th:each="componentEntry : ${questionsMap.entrySet()}">
+            <td colspan="100%" class="bg-primary text-white fw-bold text-center"
+                th:text="${componentEntry.key.description}"></td>
+        </tr>
+        <tr th:each="behaviorEntry : ${componentEntry.value.entrySet()}">
+            <td colspan="100%" class="bg-secondary text-white fw-semibold text-center"
+                th:text="${behaviorEntry.key.description}"></td>
+        </tr>
+        <tr th:each="question : ${behaviorEntry.value}">
+            <td th:text="${question.description}"></td>
             <td th:each="system : ${systems}">
-                <label>
-                    <select th:name="${system} + '_' + ${question.requirementId}">
-                        <option value="">Choose</option>
-                        <option th:each="answer : ${answersMap.get(question.requirementId)}"
-                                th:value="${answer.answerId}"
-                                th:text="${answer.description}">
-                        </option>
-                    </select>
-                </label>
+                <select th:name="${system} + '_' + ${question.requirementId}" class="form-select">
+                    <option value="">Choose</option>
+                    <option th:each="answer : ${answersMap.get(question.requirementId)}"
+                            th:value="${answer.answerId}"
+                            th:text="${answer.description}">
+                    </option>
+                </select>
             </td>
         </tr>
+        </tbody>
     </table>
-    <button type="submit">Submit answers</button>
+    <button type="submit" class="btn btn-primary mt-3">Submit answers</button>
 </form>
+</div>
 </body>
 </html>
