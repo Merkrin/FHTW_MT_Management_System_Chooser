@@ -13,26 +13,30 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="componentEntry : ${questionsMap.entrySet()}">
-            <td colspan="100%" class="bg-primary text-white fw-bold text-center"
-                th:text="${componentEntry.key.description}"></td>
-        </tr>
-        <tr th:each="behaviorEntry : ${componentEntry.value.entrySet()}">
-            <td colspan="100%" class="bg-secondary text-white fw-semibold text-center"
-                th:text="${behaviorEntry.key.description}"></td>
-        </tr>
-        <tr th:each="question : ${behaviorEntry.value}">
-            <td th:text="${question.description}"></td>
-            <td th:each="system : ${systems}">
-                <select th:name="${system} + '_' + ${question.requirementId}" class="form-select">
-                    <option value="">Choose</option>
-                    <option th:each="answer : ${answersMap.get(question.requirementId)}"
-                            th:value="${answer.answerId}"
-                            th:text="${answer.description}">
-                    </option>
-                </select>
-            </td>
-        </tr>
+        <th:block th:each="componentEntry : ${questionsMap.entrySet()}">
+            <tr>
+                <td colspan="100%" class="bg-primary text-white fw-bold text-center"
+                    th:text="${componentEntry.key.description}"></td>
+            </tr>
+            <th:block th:each="behaviorEntry : ${componentEntry.value.entrySet()}">
+                <tr>
+                    <td colspan="100%" class="bg-secondary text-white fw-semibold text-center"
+                        th:text="${behaviorEntry.key.description}"></td>
+                </tr>
+                <tr th:each="question : ${behaviorEntry.value}">
+                    <td th:text="${question.description}"></td>
+                    <td th:each="system : ${systems}">
+                        <select th:name="${system} + '_' + ${question.requirementId}" class="form-select">
+                            <option value="">Choose</option>
+                            <option th:each="answer : ${answersMap.get(question.requirementId)}"
+                                    th:value="${answer.answerId}"
+                                    th:text="${answer.description}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </th:block>
+        </th:block>
         </tbody>
     </table>
     <button type="submit" class="btn btn-primary mt-3">Submit answers</button>
