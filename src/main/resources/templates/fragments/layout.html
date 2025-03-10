@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="~{fragments/head}"/>
+<body class="bg-light">
+<div class="wrapper">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/">Systems input</a>
+    </div>
+</nav>
+<div class="container mt-4 content">
+    <th:block th:insert="~{::content}"/>
+</div>
+<footer class="footer">
+    <p class="mb-0">&copy; 2025 Barciuc Irina FHTW</p>
+</footer>
+</div>
+</body>
+</html>
