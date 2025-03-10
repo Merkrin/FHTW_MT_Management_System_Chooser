@@ -1,5 +1,6 @@
 package at.fhtw.mt.management_system_chooser.server.controller;
 
+import at.fhtw.mt.management_system_chooser.database.model.Behavior;
 import at.fhtw.mt.management_system_chooser.database.model.QuestionAnswer;
 import at.fhtw.mt.management_system_chooser.database.model.RequirementQuestion;
 import at.fhtw.mt.management_system_chooser.database.repository.QuestionAnswerRepository;
