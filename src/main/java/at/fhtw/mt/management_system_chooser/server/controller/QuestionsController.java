@@ -22,12 +22,9 @@ public class QuestionsController {
     protected static final Logger logger = LogManager.getLogger();
 
     private final RequirementQuestionRepository requirementQuestionRepository;
-    private final QuestionAnswerRepository questionAnswerRepository;
 
-    public QuestionsController(RequirementQuestionRepository requirementQuestionRepository,
-                               QuestionAnswerRepository questionAnswerRepository) {
+    public QuestionsController(RequirementQuestionRepository requirementQuestionRepository) {
         this.requirementQuestionRepository = requirementQuestionRepository;
-        this.questionAnswerRepository = questionAnswerRepository;
     }
 
     @GetMapping("/")
