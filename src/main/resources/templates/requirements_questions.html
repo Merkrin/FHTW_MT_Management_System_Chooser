@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<th:block th:replace="fragments/layout"/>
-<body>
-<div th:fragment="content">
-    <h2 class="text-center text-primary">Input Systems Evaluation</h2>
-<form action="/submit" method="post" class="mt-4">
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-        <tr>
-            <th>Evaluation Question</th>
-            <th th:each="system : ${systems}" th:text="${system}"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="componentEntry : ${questionsMap.entrySet()}">
-            <tr>
-                <td colspan="100%" class="bg-primary text-white fw-bold text-center"
-                    th:text="${componentEntry.key.description}"></td>
-            </tr>
-            <th:block th:each="behaviorEntry : ${componentEntry.value.entrySet()}">
+<th:block th:replace="fragments/layout">
+    <div th:fragment="content">
+        <h2 class="text-center text-primary">Input Systems Evaluation</h2>
+        <form action="/submit" method="post" class="mt-4">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
                 <tr>
-                    <td colspan="100%" class="bg-secondary text-white fw-semibold text-center"
-                        th:text="${behaviorEntry.key.description}"></td>
+                    <th>Evaluation Question</th>
+                    <th th:each="system : ${systems}" th:text="${system}"></th>
                 </tr>
-                <tr th:each="question : ${behaviorEntry.value}">
-                    <td th:text="${question.description}"></td>
-                    <td th:each="system : ${systems}">
-                        <select th:name="${system} + '_' + ${question.requirementId}" class="form-select">
-                            <option value="">Choose</option>
-                            <option th:each="answer : ${answersMap.get(question.requirementId)}"
-                                    th:value="${answer.answerId}"
-                                    th:text="${answer.description}">
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-            </th:block>
-        </th:block>
-        </tbody>
-    </table>
-    <button type="submit" class="btn btn-primary mt-3">Submit answers</button>
-</form>
-</div>
-</body>
+                </thead>
+                <tbody>
+                <th:block th:each="componentEntry : ${questionsMap.entrySet()}">
+                    <tr>
+                        <td colspan="100%" class="bg-primary text-white fw-bold text-center"
+                            th:text="${componentEntry.key.description}"></td>
+                    </tr>
+                    <th:block th:each="behaviorEntry : ${componentEntry.value.entrySet()}">
+                        <tr>
+                            <td colspan="100%" class="bg-secondary text-white fw-semibold text-center"
+                                th:text="${behaviorEntry.key.description}"></td>
+                        </tr>
+                        <tr th:each="question : ${behaviorEntry.value}">
+                            <td th:text="${question.description}"></td>
+                            <td th:each="system : ${systems}">
+                                <select th:name="${system} + '_' + ${question.requirementId}" class="form-select" th:required="true">
+                                    <option value="">Choose</option>
+                                    <option th:each="answer : ${answersMap.get(question.requirementId)}"
+                                            th:value="${answer.answerId}"
+                                            th:text="${answer.description}">
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                    </th:block>
+                </th:block>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary mt-3">Submit answers</button>
+        </form>
+    </div>
+</th:block>
 </html>
