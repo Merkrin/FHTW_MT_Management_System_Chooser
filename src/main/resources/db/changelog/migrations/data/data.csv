@@ -1,5 +1,13 @@
-﻿Question_id;Description;Rating;Human_component_id;Human_component;Behavior_id;Behavior;Answer_id;Answers
-R1;Question R1;5;1;component1;1;behavior1;1;yes:1,no:-1,n/a:0
-R1.1;Question R1.1;5;2;component2;1;behavior1;2;yes:1,no:-1,n/a:1
-R2;Question R2;1;1;component1;2;behavior2;3;yes:1,no:-1,n/a:2
-R3;Question R3;2;3;component3;3;behavior3;4;test:1,notest:-1
+﻿Question_id;Description;Rating;Human_component_id;Human_component;Behavior_id;Behavior;Answer_id;Answers;Answer_value
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;1;[[business_analyst_requirements]];1;[[information_model]];1;yes;1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;1;[[business_analyst_requirements]];1;[[information_model]];2;no;-1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;1;[[business_analyst_requirements]];1;[[information_model]];3;can be added;0
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;2;[[developer_requrements]];1;[[information_model]];1;yes;1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;2;[[developer_requrements]];1;[[information_model]];2;no;-1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;2;[[developer_requrements]];1;[[information_model]];3;can be added;0
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;3;[[tester_requirements]];1;[[information_model]];1;yes;1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;3;[[tester_requirements]];1;[[information_model]];2;no;-1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;3;[[tester_requirements]];1;[[information_model]];3;can be added;0
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;4;[[project_management_requirements]];1;[[information_model]];1;yes;1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;4;[[project_management_requirements]];1;[[information_model]];2;no;-1
+R1;Система управления требованиями должна поддерживать хранение элементарных требований.;5;4;[[project_management_requirements]];1;[[information_model]];3;can be added;0

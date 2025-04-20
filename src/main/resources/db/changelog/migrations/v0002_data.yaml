@@ -46,6 +46,10 @@ databaseChangeLog:
                   name: answer_id
                   header: Answer_id
                   type: SKIP
+              - column:
+                  name: answer_value
+                  header: Answer_value
+                  type: SKIP
             primaryKey: behavior_id
 
 
@@ -90,6 +94,10 @@ databaseChangeLog:
               - column:
                   name: answer_id
                   header: Answer_id
+                  type: SKIP
+              - column:
+                  name: answer_value
+                  header: Answer_value
                   type: SKIP
             primaryKey: component_id
 
@@ -136,6 +144,10 @@ databaseChangeLog:
                   name: answer_id
                   header: Answer_id
                   type: SKIP
+              - column:
+                  name: answer_value
+                  header: Answer_value
+                  type: SKIP
             primaryKey: requirement_id
 
         - loadUpdateData:
@@ -152,6 +164,10 @@ databaseChangeLog:
                   name: requirement_question_id
                   header: Question_id
                   type: varchar
+              - column:
+                  name: answer_value
+                  header: Answer_value
+                  type: integer
               - column:
                   name: requirement_id
                   header: Question_id
