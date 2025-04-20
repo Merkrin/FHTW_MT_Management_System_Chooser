@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: /migrations/v0001_init.sql
+      relativeToChangelogFile: true
+  - include:
+      file: /migrations/v0002_data.yaml
+      relativeToChangelogFile: true
