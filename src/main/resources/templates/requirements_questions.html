@@ -25,10 +25,10 @@
                         <tr th:each="question : ${behaviorEntry.value}">
                             <td th:text="${question.description}"></td>
                             <td th:each="system : ${systems}">
-                                <select th:name="${system} + '_' + ${question.requirementId}" class="form-select" th:required="true">
+                                <select th:name="${system} + '_' + ${question.requirementId} + '_' + ${question.rating}" class="form-select" th:required="true">
                                     <option value="">Choose</option>
                                     <option th:each="answer : ${answersMap.get(question.requirementId)}"
-                                            th:value="${answer.answerId}"
+                                            th:value="${answer.answerId} + '_' + ${answer.answer_value} + '_' + ${question.rating}"
                                             th:text="${answer.description}">
                                     </option>
                                 </select>

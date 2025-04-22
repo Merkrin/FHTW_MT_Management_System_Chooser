@@ -22,6 +22,7 @@ public class RequirementQuestion {
     private Behavior behavior;
 
     private String description;
+    private Integer rating;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "requirement_question_id", referencedColumnName = "requirement_id")

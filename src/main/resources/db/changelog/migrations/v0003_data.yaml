@@ -2,6 +2,8 @@ databaseChangeLog:
   - changeSet:
       id: load_init_data
       author: user
+      runAlways: true
+      validCheckSum: ANY
       changes:
         - loadUpdateData:
             file: classpath:db/changelog/migrations/data/data.csv

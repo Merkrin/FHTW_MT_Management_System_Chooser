@@ -4,9 +4,9 @@ import at.fhtw.mt.management_system_chooser.database.model.Behavior;
 import at.fhtw.mt.management_system_chooser.database.model.HumanComponent;
 import at.fhtw.mt.management_system_chooser.database.model.QuestionAnswer;
 import at.fhtw.mt.management_system_chooser.database.model.RequirementQuestion;
-import at.fhtw.mt.management_system_chooser.database.repository.QuestionAnswerRepository;
 import at.fhtw.mt.management_system_chooser.database.repository.RequirementQuestionRepository;
 import at.fhtw.mt.management_system_chooser.server.service.QuestionsMapperService;
+import at.fhtw.mt.management_system_chooser.server.service.ResultCounterService;
 import at.fhtw.mt.management_system_chooser.server.utils.CollectionsUtils;
 import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class QuestionsController {
@@ -27,11 +26,13 @@ public class QuestionsController {
 
     private final RequirementQuestionRepository requirementQuestionRepository;
     private final QuestionsMapperService questionsMapperService;
+    private final ResultCounterService resultCounterService;
 
     public QuestionsController(RequirementQuestionRepository requirementQuestionRepository,
-                               QuestionsMapperService questionsMapperService) {
+                               QuestionsMapperService questionsMapperService, ResultCounterService resultCounterService) {
         this.requirementQuestionRepository = requirementQuestionRepository;
         this.questionsMapperService = questionsMapperService;
+        this.resultCounterService = resultCounterService;
     }
 
     @GetMapping("/")
@@ -86,13 +87,7 @@ public class QuestionsController {
     public String submitAnswers(@RequestParam Map<String, String> selectedAnswers, Model model, HttpSession session) {
         session.setAttribute("previousAnswers", selectedAnswers);
 
-
-        Map<String, Long> results = selectedAnswers.entrySet().stream()
-                .filter(entry -> entry.getValue() != null && !entry.getValue().isEmpty())
-                .collect(Collectors.groupingBy(
-                        entry -> entry.getKey().split("_")[0],
-                        Collectors.counting()
-                ));
+        Map<String, Integer> results = resultCounterService.getResultsBySystems(selectedAnswers);
 
         model.addAttribute("results", results);
 

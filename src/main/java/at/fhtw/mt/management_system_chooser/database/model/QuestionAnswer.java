@@ -12,4 +12,5 @@ public class QuestionAnswer {
     private Integer answerId;
 
     private String description;
+    private Integer answer_value;
 }
