@@ -3,5 +3,5 @@ databaseChangeLog:
       file: /migrations/v0001_init.sql
       relativeToChangelogFile: true
   - include:
-      file: /migrations/v0002_data.yaml
+      file: /migrations/v0003_data.yaml
       relativeToChangelogFile: true
