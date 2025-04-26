@@ -2,9 +2,10 @@ databaseChangeLog:
   - changeSet:
       id: load_init_data
       author: user
+      validCheckSum: ANY
       changes:
         - loadUpdateData:
-            file: classpath:db/changelog/migrations/data/data.csv
+            file: classpath:db/changelog/migrations/data/data_test.csv
             tableName: behaviors
             separator: ";"
             quotchar: "'"
@@ -54,7 +55,7 @@ databaseChangeLog:
 
 
         - loadUpdateData:
-            file: classpath:db/changelog/migrations/data/data.csv
+            file: classpath:db/changelog/migrations/data/data_test.csv
             tableName: human_components
             separator: ";"
             encoding: UTF-8
@@ -103,7 +104,7 @@ databaseChangeLog:
 
 
         - loadUpdateData:
-            file: classpath:db/changelog/migrations/data/data.csv
+            file: classpath:db/changelog/migrations/data/data_test.csv
             tableName: requirement_questions
             separator: ";"
             encoding: UTF-8
@@ -151,7 +152,7 @@ databaseChangeLog:
             primaryKey: requirement_id
 
         - loadUpdateData:
-            file: classpath:db/changelog/migrations/data/data.csv
+            file: classpath:db/changelog/migrations/data/data_test.csv
             tableName: question_answers
             separator: ";"
             encoding: UTF-8
